@@ -760,10 +760,15 @@ setup(void)
 	for (j = 0; j < SchemeLast; j++) {
 		scheme[j] = drw_scm_create(drw, (const char**)colors[j], alphas[j], 2);
 	}
-	for (j = 0; j < SchemeOut; ++j) {
+	/*
+	 * The following code causes compiler warnings and dmenu fails to run when
+	 * invoked. I don't know why.
+	 *
+	 */
+	/*for (j = 0; j < SchemeOut; ++j) {
 		for (i = 0; i < 2; ++i)
 			free(colors[j][i]);
-	}
+	}*/
 
 	clip = XInternAtom(dpy, "CLIPBOARD",   False);
 	utf8 = XInternAtom(dpy, "UTF8_STRING", False);
@@ -1004,8 +1009,13 @@ main(int argc, char *argv[])
 
 	if (!drw_fontset_create(drw, (const char**)fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-
-	free(fonts[0]);
+	
+	/*
+	 * The following code causes compiler warnings and dmenu fails to run when
+	 * invoked. I don't know why.
+	 *
+	 */
+	/*free(fonts[0]);*/
 	lrpad = drw->fonts->h;
 
 #ifdef __OpenBSD__
