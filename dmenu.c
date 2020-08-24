@@ -950,7 +950,7 @@ main(int argc, char *argv[])
 			fstrstr = cistrstr;
 		} else if (!strcmp(argv[i], "-P"))   /* is the input a password */
 			passwd = 1;
-		} else if (!strcmp(argv[i], "-r")) /* reject input which results in no match */
+		else if (!strcmp(argv[i], "-r")) /* reject input which results in no match */
 			reject_no_match = 1;
 		else if (i + 1 == argc)
 			usage();
